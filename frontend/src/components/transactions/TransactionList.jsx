@@ -32,7 +32,7 @@ export default function TransactionList() {
         <li key={tx.id} className="border p-2 rounded">
           <div><b>{tx.type}</b>: {tx.amount}</div>
           <div>{tx.description}</div>
-          <div className="text-xs text-gray-500">{new Date(tx.created_at).toLocaleString()}</div>
+          <div className="text-xs text-gray-500">{new Date(tx.createdat || tx.created_at).toLocaleString()}</div>
         </li>
       ))}
     </ul>

@@ -1,6 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthStore } from "../store/auth";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const { isAuthenticated, clearAuth } = useAuthStore((s) => ({ isAuthenticated: s.isAuthenticated, clearAuth: s.clearAuth }));
+  const handleSignOut = () => {
+    clearAuth();
+    navigate('/auth/sign-in', { replace: true });
+  };
   return (
     <header className='bg-white shadow-md'>
       <div className='container mx-auto px-4'>
@@ -21,6 +28,11 @@ const Header = () => {
             <Link to='/profile' className='px-4 text-gray-600 hover:text-gray-800'>
               Profile
             </Link>
+            {isAuthenticated ? (
+              <button onClick={handleSignOut} className='ml-4 text-red-600 hover:text-red-700'>Sign out</button>
+            ) : (
+              <Link to='/auth/sign-in' className='px-4 text-gray-600 hover:text-gray-800'>Sign in</Link>
+            )}
           </div>
         </nav>
       </div>
