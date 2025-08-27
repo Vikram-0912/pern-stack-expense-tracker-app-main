@@ -5,7 +5,7 @@ export const signupUser = async (req, res) => {
   try {
     const { firstName, email, password } = req.body;
 
-    if (!(firstName || email || password)) {
+    if (!(firstName && email && password)) {
       return res.status(404).json({
         status: "failed",
         message: "Provide Required Fields!",
@@ -17,7 +17,7 @@ export const signupUser = async (req, res) => {
       values: [email],
     });
 
-    if (userExist.rows[0].userExist) {
+    if (userExist.rows[0].exists) {
       return res.status(409).json({
         status: "failed",
         message: "Email Address already exists. Try Login",
