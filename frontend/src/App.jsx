@@ -2,9 +2,9 @@ import { Routes, Route, Navigate, Outlet, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import Layout from "./pages/Layout";
 import Dashboard from "./pages/Dashboard";
-// import Accounts from "./pages/Accounts";
-// import Transactions from "./pages/Transactions";
-// import Profile from "./pages/Profile";
+import Accounts from "./pages/Accounts";
+import Transactions from "./pages/Transactions";
+import Profile from "./pages/Profile";
 // import Auth from "./pages/Auth";
 
 function App() {
@@ -30,9 +30,9 @@ function App() {
             }
           />
           <Route path='/dashboard' element={<Dashboard />} />
-          {/* <Route path='/accounts' element={<Accounts />} /> */}
-          {/* <Route path='/transactions' element={<Transactions />} /> */}
-          {/* <Route path='/profile' element={<Profile />} /> */}
+          <Route path='/accounts' element={<Accounts />} />
+          <Route path='/transactions' element={<Transactions />} />
+          <Route path='/profile' element={<Profile />} />
         </Route>
       </Routes>
     </main>
